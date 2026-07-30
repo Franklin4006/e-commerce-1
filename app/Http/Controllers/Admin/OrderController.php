@@ -81,6 +81,8 @@ class OrderController extends Controller
             ]);
         });
 
+        OrderCreator::sendStatusChangedEmail($order);
+
         return back()->with('status', 'Order status updated successfully.');
     }
 

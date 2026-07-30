@@ -160,4 +160,14 @@ class OrderCreator
             'order_url' => route('checkout.confirmation', $order),
         ]));
     }
+
+    public static function sendStatusChangedEmail(Order $order): void
+    {
+        Mail::to($order->customer_email)->send(new TemplatedMail('order-status-changed', [
+            'name' => $order->customer_name,
+            'order_number' => $order->order_number,
+            'status' => ucfirst($order->status),
+            'order_url' => route('orders.show', $order),
+        ]));
+    }
 }
