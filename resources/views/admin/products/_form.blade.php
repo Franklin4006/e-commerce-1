@@ -59,14 +59,8 @@
 
 <div class="form-group">
     <label class="form-label">Thumbnail Image</label>
-    <label for="thumbnail" class="file-drop" id="thumbnail-drop">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg>
-        <span class="file-drop-text" id="thumbnail-drop-text">
-            {{ isset($product) && $product->thumbnail ? 'Replace thumbnail' : 'Click to upload a thumbnail' }}
-        </span>
-        <span class="file-drop-hint">PNG, JPG up to 2MB</span>
-    </label>
-    <input id="thumbnail" type="file" name="thumbnail" accept="image/*" class="file-drop-input">
+    <input id="thumbnail" type="file" name="thumbnail" accept="image/*" class="form-control">
+    <small style="color: var(--text-muted);">PNG, JPG up to 2MB</small>
     @error('thumbnail') <span class="field-error">{{ $message }}</span> @enderror
     <img id="thumbnail-preview" src="{{ isset($product) && $product->thumbnail ? asset('storage/'.$product->thumbnail) : '' }}"
          alt="" class="thumb-lg form-preview" style="{{ isset($product) && $product->thumbnail ? '' : 'display: none;' }}">
@@ -74,12 +68,8 @@
 
 <div class="form-group">
     <label class="form-label">Product Images</label>
-    <label for="images" class="file-drop" id="images-drop">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg>
-        <span class="file-drop-text" id="images-drop-text">Click to upload product images</span>
-        <span class="file-drop-hint">You can select multiple images</span>
-    </label>
-    <input id="images" type="file" name="images[]" accept="image/*" multiple class="file-drop-input">
+    <input id="images" type="file" name="images[]" accept="image/*" multiple class="form-control">
+    <small style="color: var(--text-muted);">You can select multiple images</small>
     @error('images') <span class="field-error">{{ $message }}</span> @enderror
     <div class="gallery-grid" id="new-images-preview"></div>
 

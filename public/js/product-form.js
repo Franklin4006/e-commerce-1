@@ -3,13 +3,8 @@
 
     var thumbnailInput = document.getElementById('thumbnail');
     var thumbnailPreview = document.getElementById('thumbnail-preview');
-    var thumbnailDrop = document.getElementById('thumbnail-drop');
-    var thumbnailDropText = document.getElementById('thumbnail-drop-text');
 
     var imagesInput = document.getElementById('images');
-    var imagesDrop = document.getElementById('images-drop');
-    var imagesDropText = document.getElementById('images-drop-text');
-    var imagesDropDefaultText = imagesDropText.textContent;
     var newImagesPreview = document.getElementById('new-images-preview');
     var existingImagesContainer = document.getElementById('existing-images');
 
@@ -35,23 +30,12 @@
         if (file) {
             thumbnailPreview.src = URL.createObjectURL(file);
             thumbnailPreview.style.display = 'block';
-            thumbnailDrop.classList.add('has-file');
-            thumbnailDropText.textContent = file.name;
         }
     });
 
     imagesInput.addEventListener('change', function () {
         var files = Array.prototype.slice.call(imagesInput.files);
         newImagesPreview.innerHTML = '';
-
-        if (files.length === 0) {
-            imagesDrop.classList.remove('has-file');
-            imagesDropText.textContent = imagesDropDefaultText;
-            return;
-        }
-
-        imagesDrop.classList.add('has-file');
-        imagesDropText.textContent = files.length + ' image(s) selected';
 
         files.forEach(function (file) {
             var item = document.createElement('div');
